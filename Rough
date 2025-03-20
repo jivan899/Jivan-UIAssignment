@@ -1,0 +1,92 @@
+    @Override
+    public CustomerTransactionModel updateTransaction(Long transactionId, CustomerTransactionModel transactionModel) {
+        CustomerTransaction existingTransaction = transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+
+        // Map updated fields from model to entity
+        modelMapper.map(transactionModel, existingTransaction);
+
+        if (transactionModel.getCustomerId() != null) {
+            Customer customer = customerRepository.findById(transactionModel.getCustomerId())
+                    .orElseThrow(() -> new RuntimeException("Customer not found"));
+            existingTransaction.setCustomer(customer);
+        }
+
+        // Save updated transaction
+        CustomerTransaction updatedTransaction = transactionRepository.save(existingTransaction);
+
+        // Convert entity back to model before returning
+        return modelMapper.map(updatedTransaction, CustomerTransactionModel.class);
+    }
+    
+    //    @Override
+//    public CustomerTransactionModel updateTransaction(Long transactionId, CustomerTransactionModel transactionModel) {
+//
+//    	
+//    	
+//
+//    	
+//        CustomerTransaction existingTransaction = transactionRepository.findById(transactionId)
+//                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+//
+//        modelMapper.map(transactionModel, existingTransaction);
+//        
+////    	Customer customer = existingTransaction.getCustomer();
+////    	if (customer != null && customer.getId() == null) {
+////    		// Handle case where customer ID is unexpectedly null
+////    		customer.setId(transactionModel.getCustomerId());
+////    		
+////    	}
+//        
+//        
+//
+//
+//        CustomerTransaction updatedTransaction = transactionRepository.save(existingTransaction);
+//
+//        return modelMapper.map(updatedTransaction, CustomerTransactionModel.class);
+//    }
+
+
+//    @Override
+//    public CustomerTransactionModel addTransaction(CustomerTransactionModel customerTransactionModel) {
+//        // Convert CustomerTransactionModel to CustomerTransaction entity
+//        CustomerTransaction transaction = modelMapper.map(customerTransactionModel, CustomerTransaction.class);
+//
+//        // Retrieve and set Customer entity
+//        Customer customer = customerRepository.findById(customerTransactionModel.getCustomerId())
+//                .orElseThrow(() -> new RuntimeException("Customer not found"));
+//        transaction.setCustomer(customer);
+//
+//
+//        // Save the transaction entity
+//        CustomerTransaction savedTransaction = transactionRepository.save(transaction);
+//
+//        
+//        // Calculate reward points
+//        //rewardService.CalculateAndSave(savedTransaction);
+//
+//        // Convert back to CustomerTransactionModel and return
+//        return modelMapper.map(savedTransaction, CustomerTransactionModel.class);
+//    }
+
+
+
+//    @Override
+//    public CustomerTransactionModel addTransaction(CustomerTransactionModel customerTransactionModel) {
+//        try {
+//            // Convert CustomerTransactionModel to CustomerTransaction entity
+//            CustomerTransaction transaction = modelMapper.map(customerTransactionModel, CustomerTransaction.class);
+//
+//            // Retrieve and set Customer entity
+//            Customer customer = customerRepository.findById(customerTransactionModel.getCustomerId())
+//                    .orElseThrow(() -> new RuntimeException("Customer not found"));
+//            transaction.setCustomer(customer);
+//
+//            // Save the transaction entity
+//            CustomerTransaction savedTransaction = transactionRepository.save(transaction);
+//
+//            return modelMapper.map(savedTransaction, CustomerTransactionModel.class);
+//        } catch (ObjectOptimisticLockingFailureException e) {
+//            throw new RuntimeException("The transaction was updated by another user. Please refresh and try again.");
+//        }
+//    }

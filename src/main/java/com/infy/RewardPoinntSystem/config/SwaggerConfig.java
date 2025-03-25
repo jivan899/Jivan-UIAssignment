@@ -11,31 +11,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
-//    @Bean
-//    public OpenAPI customOpenAPI() {
-//        return new OpenAPI()
-//                .info(new Info()
-//                        .title("Infy Reward System")
-//                        .version("1.0")
-//                        .description("API documentation for Reward Poin System"));
-//    }
-    @Bean
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("Blogging Application")
-                        .version("1.0")
-                        .description("API documentation for Reward Poin System")
-                        .contact(new Contact()
-                                .name("Jivan Mahajan")
-                                .url("https://google.com")
-                                .email("jivan.mahajan37@gmail.com"))
-                        .license(new License()
-                                .name("License of API")
-                                .url("https://google.com")));
-    }
-    
+	@Bean
+	public OpenAPI customOpenAPI() {
+		return new OpenAPI().info(new Info().title("Blogging Application").version("1.0")
+				.description("API documentation for Reward Poin System")
+				.contact(new Contact().name("Jivan Mahajan").url("https://google.com")
+						.email("jivan.mahajan37@gmail.com"))
+				.license(new License().name("License of API").url("https://google.com")));
+	}
 
 }
-
-

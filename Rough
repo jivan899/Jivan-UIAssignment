@@ -90,3 +90,12 @@
 //            throw new RuntimeException("The transaction was updated by another user. Please refresh and try again.");
 //        }
 //    }
+
+
+
+//	    // Group rewards by month
+//	    Map<YearMonth, Integer> monthlyPoints = rewards.stream()
+//	            .collect(Collectors.groupingBy(
+//	                r -> YearMonth.of(r.getYear(), r.getMonth()),
+//	                Collectors.summingInt(RewardPoints::getPoints)
+//	            ));

@@ -14,16 +14,16 @@ import com.infy.RewardPoinntSystem.serviceImpl.CustomerServiceImpl;
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
-    @Autowired
-    private CustomerServiceImpl customerService;
+	@Autowired
+	private CustomerServiceImpl customerService;
 
-    @PostMapping("/register")
-    public CustomerModel registerCustomer(@RequestBody CustomerModel customer) {
-        return customerService.registerCustomer(customer);
-    }
+	@PostMapping("/register")
+	public CustomerModel registerCustomer(@RequestBody CustomerModel customer) {
+		return customerService.registerCustomer(customer);
+	}
 
-    @PostMapping("/login")
-    public Customer login(@RequestParam String email, @RequestParam String password) {
-        return customerService.login(email, password);
-    }
+	@PostMapping("/login")
+	public Customer login(@RequestParam String email, @RequestParam String password) {
+		return customerService.login(email, password);
+	}
 }

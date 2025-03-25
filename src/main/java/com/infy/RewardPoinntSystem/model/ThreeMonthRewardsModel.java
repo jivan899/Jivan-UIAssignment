@@ -1,7 +1,5 @@
 package com.infy.RewardPoinntSystem.model;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerTransactionModel {
-
-	private String spentDetails;
-	private double amount;
-	private LocalDate date;
-	private Long customerId;
+public class ThreeMonthRewardsModel {
+    private String month1;
+    private String month2;
+    private String month3;
+    private int total;
 }

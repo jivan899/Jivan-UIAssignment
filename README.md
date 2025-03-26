@@ -22,6 +22,7 @@ o	Custom exceptions (`ResourceNotFound`, `DuplicateEmail`, etc.)
 o	Global exception handler with consistent JSON responses
 
 Tech Stack
+Java Version 17.0.12
 Backend	Spring Boot 3.4.3
 Database	PostgreSQL 9.3
 ORM	Spring Data JPA + Hibernate
